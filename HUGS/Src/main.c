@@ -216,3 +216,7 @@ void ShowBatteryState(uint32_t pin)
 	gpio_bit_write(LED_RED_PORT, LED_RED, pin == LED_RED ? SET : RESET);
 }
 
+
+void	resetInactivityTimer(void) {
+	inactivity_timeout_counter = 0;
+}

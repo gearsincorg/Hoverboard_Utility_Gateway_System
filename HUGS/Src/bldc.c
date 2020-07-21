@@ -199,6 +199,11 @@ void SetEnable(FlagStatus setEnable)
 //----------------------------------------------------------------------------
 void SetSpeed(int16_t speed)
 {
+	//  Keep driver alive
+	if (abs16(speed) >= 10) {
+		resetInactivityTimer();
+	}
+
 	closedLoopSpeed = TRUE;
 	speedSetpoint = CLAMP(speed, -5000, 5000);
 	
@@ -237,6 +242,10 @@ void SetSpeed(int16_t speed)
 //----------------------------------------------------------------------------
 void SetPower(int16_t power)
 {
+	//  Keep driver alive
+	if (abs16(power) > 5) {
+		resetInactivityTimer();
+	}
 	closedLoopSpeed = FALSE;
 	stepperMode   = FALSE;
 	speedSetpoint = 0;

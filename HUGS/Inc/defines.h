@@ -144,4 +144,6 @@ typedef struct
 	uint16_t current_dc;
 } adc_buf_t;
 
+void	resetInactivityTimer(void);
+
 #endif
