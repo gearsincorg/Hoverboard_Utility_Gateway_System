@@ -183,6 +183,8 @@ void ShutOff(void)
 	HUGS_ESTOP   = TRUE;	
 	SetEnable(RESET);
 	SendHUGSReply();			// Transfer ESTOP to Controller
+	SendHUGSCmd(XXX, 0);	// Tell possible slave to stop as well.
+	
 
 	// Play shutdown sound
 	for (index = 0; index < 8; index++)

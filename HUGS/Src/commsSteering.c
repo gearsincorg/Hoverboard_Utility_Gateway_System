@@ -170,7 +170,7 @@ bool CheckUSARTSteerInput(uint8_t USARTBuffer[])
 	
 	// command is valid.  Process it now
 	Steer_CommandID		= (CMD_ID)USARTBuffer[3] ;
-	Steer_ResponseID		= (RSP_ID)USARTBuffer[4] ;
+	Steer_ResponseID	= (RSP_ID)USARTBuffer[4] ;
 	
 	switch(Steer_CommandID) {
 		case DSPE:

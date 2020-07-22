@@ -467,12 +467,12 @@ Image Symbol Table
     .ARM.Collect$$rtexit$$00000003           0x080001f8   Section        4  rtexit2.o(.ARM.Collect$$rtexit$$00000003)
     .ARM.Collect$$rtexit$$00000004           0x080001fc   Section        6  rtexit2.o(.ARM.Collect$$rtexit$$00000004)
     .text                                    0x08000204   Section        0  main.o(.text)
-    .text                                    0x08000424   Section        0  bldc.o(.text)
-    .text                                    0x08000c48   Section        0  setup.o(.text)
-    .text                                    0x0800144c   Section        0  it.o(.text)
-    .text                                    0x08001550   Section        0  comms.o(.text)
-    .text                                    0x080015c0   Section        0  commssteering.o(.text)
-    .text                                    0x080017f4   Section        0  commshugs.o(.text)
+    .text                                    0x0800042c   Section        0  bldc.o(.text)
+    .text                                    0x08000c50   Section        0  setup.o(.text)
+    .text                                    0x08001454   Section        0  it.o(.text)
+    .text                                    0x08001558   Section        0  comms.o(.text)
+    .text                                    0x080015c8   Section        0  commssteering.o(.text)
+    .text                                    0x080017fc   Section        0  commshugs.o(.text)
     .text                                    0x08001c8c   Section        0  gd32f1x0_adc.o(.text)
     .text                                    0x08002310   Section        0  gd32f1x0_dma.o(.text)
     .text                                    0x080027c4   Section        0  gd32f1x0_fwdgt.o(.text)
@@ -618,61 +618,61 @@ Image Symbol Table
     __rt_exit_ls                             0x080001f9   Thumb Code     0  rtexit2.o(.ARM.Collect$$rtexit$$00000003)
     __rt_exit_prels_1                        0x080001f9   Thumb Code     0  rtexit2.o(.ARM.Collect$$rtexit$$00000002)
     __rt_exit_exit                           0x080001fd   Thumb Code     0  rtexit2.o(.ARM.Collect$$rtexit$$00000004)
-    ShutOff                                  0x08000205   Thumb Code    84  main.o(.text)
-    ShowBatteryState                         0x08000259   Thumb Code    78  main.o(.text)
-    main                                     0x080002a7   Thumb Code   324  main.o(.text)
-    resetInactivityTimer                     0x080003eb   Thumb Code     8  main.o(.text)
-    SetEnable                                0x08000425   Thumb Code    20  bldc.o(.text)
-    abs16                                    0x08000439   Thumb Code    10  bldc.o(.text)
-    SetSpeed                                 0x08000443   Thumb Code   172  bldc.o(.text)
-    SetPWM                                   0x080004ef   Thumb Code    30  bldc.o(.text)
-    SetPower                                 0x0800050d   Thumb Code    46  bldc.o(.text)
-    GetPWM                                   0x0800053b   Thumb Code     8  bldc.o(.text)
-    GetSpeed                                 0x08000543   Thumb Code     8  bldc.o(.text)
-    CalculateSpeed                           0x0800054b   Thumb Code    64  bldc.o(.text)
-    GetPosition                              0x0800058b   Thumb Code    26  bldc.o(.text)
-    setPhaseAngle                            0x080005a5   Thumb Code   112  bldc.o(.text)
-    abs32                                    0x08000615   Thumb Code     8  bldc.o(.text)
-    runPID                                   0x0800061d   Thumb Code   194  bldc.o(.text)
-    getTransitionAngle                       0x080006df   Thumb Code    46  bldc.o(.text)
-    hallToPos                                0x0800070d   Thumb Code    56  bldc.o(.text)
-    CalculateBLDC                            0x08000745   Thumb Code  1150  bldc.o(.text)
-    Interrupt_init                           0x08000c49   Thumb Code    12  setup.o(.text)
-    Watchdog_init                            0x08000c55   Thumb Code    54  setup.o(.text)
-    TimeoutTimer_init                        0x08000c8b   Thumb Code    80  setup.o(.text)
-    GPIO_init                                0x08000cdb   Thumb Code   836  setup.o(.text)
-    PWM_init                                 0x0800101f   Thumb Code   388  setup.o(.text)
-    ADC_init                                 0x080011a3   Thumb Code   226  setup.o(.text)
-    USART_HUGS_init                          0x08001285   Thumb Code   206  setup.o(.text)
-    USART_Steer_COM_init                     0x08001353   Thumb Code   206  setup.o(.text)
-    SysTick_Handler                          0x0800144d   Thumb Code    12  it.o(.text)
-    ResetTimeout                             0x08001459   Thumb Code     8  it.o(.text)
-    TIMER13_IRQHandler                       0x08001461   Thumb Code    68  it.o(.text)
-    TIMER0_BRK_UP_TRG_COM_IRQHandler         0x080014a5   Thumb Code    18  it.o(.text)
-    DMA_Channel0_IRQHandler                  0x080014b7   Thumb Code    26  it.o(.text)
-    DMA_Channel1_2_IRQHandler                0x080014d1   Thumb Code    26  it.o(.text)
-    DMA_Channel3_4_IRQHandler                0x080014eb   Thumb Code    26  it.o(.text)
-    millis                                   0x08001505   Thumb Code     6  it.o(.text)
-    Delay                                    0x0800150b   Thumb Code    20  it.o(.text)
-    NMI_Handler                              0x0800151f   Thumb Code     2  it.o(.text)
-    HardFault_Handler                        0x08001521   Thumb Code     4  it.o(.text)
-    MemManage_Handler                        0x08001525   Thumb Code     4  it.o(.text)
-    BusFault_Handler                         0x08001529   Thumb Code     4  it.o(.text)
-    UsageFault_Handler                       0x0800152d   Thumb Code     4  it.o(.text)
-    SVC_Handler                              0x08001531   Thumb Code     2  it.o(.text)
-    DebugMon_Handler                         0x08001533   Thumb Code     2  it.o(.text)
-    PendSV_Handler                           0x08001535   Thumb Code     2  it.o(.text)
-    SendBuffer                               0x08001551   Thumb Code    50  comms.o(.text)
-    CalcCRC                                  0x08001583   Thumb Code    62  comms.o(.text)
-    SendSteerDevice                          0x080015c1   Thumb Code    36  commssteering.o(.text)
-    max                                      0x080015e5   Thumb Code    14  commssteering.o(.text)
-    CheckUSARTSteerInput                     0x080015f3   Thumb Code   290  commssteering.o(.text)
-    UpdateUSARTSteerInput                    0x08001715   Thumb Code   188  commssteering.o(.text)
-    SetESTOP                                 0x080017f5   Thumb Code     8  commshugs.o(.text)
-    SendHUGSReply                            0x080017fd   Thumb Code   490  commshugs.o(.text)
-    CheckUSARTHUGSInput                      0x080019e7   Thumb Code   266  commshugs.o(.text)
-    UpdateUSARTHUGSInput                     0x08001af1   Thumb Code   188  commshugs.o(.text)
-    SendHUGSCmd                              0x08001bad   Thumb Code   218  commshugs.o(.text)
+    ShutOff                                  0x08000205   Thumb Code    92  main.o(.text)
+    ShowBatteryState                         0x08000261   Thumb Code    78  main.o(.text)
+    main                                     0x080002af   Thumb Code   324  main.o(.text)
+    resetInactivityTimer                     0x080003f3   Thumb Code     8  main.o(.text)
+    SetEnable                                0x0800042d   Thumb Code    20  bldc.o(.text)
+    abs16                                    0x08000441   Thumb Code    10  bldc.o(.text)
+    SetSpeed                                 0x0800044b   Thumb Code   172  bldc.o(.text)
+    SetPWM                                   0x080004f7   Thumb Code    30  bldc.o(.text)
+    SetPower                                 0x08000515   Thumb Code    46  bldc.o(.text)
+    GetPWM                                   0x08000543   Thumb Code     8  bldc.o(.text)
+    GetSpeed                                 0x0800054b   Thumb Code     8  bldc.o(.text)
+    CalculateSpeed                           0x08000553   Thumb Code    64  bldc.o(.text)
+    GetPosition                              0x08000593   Thumb Code    26  bldc.o(.text)
+    setPhaseAngle                            0x080005ad   Thumb Code   112  bldc.o(.text)
+    abs32                                    0x0800061d   Thumb Code     8  bldc.o(.text)
+    runPID                                   0x08000625   Thumb Code   194  bldc.o(.text)
+    getTransitionAngle                       0x080006e7   Thumb Code    46  bldc.o(.text)
+    hallToPos                                0x08000715   Thumb Code    56  bldc.o(.text)
+    CalculateBLDC                            0x0800074d   Thumb Code  1150  bldc.o(.text)
+    Interrupt_init                           0x08000c51   Thumb Code    12  setup.o(.text)
+    Watchdog_init                            0x08000c5d   Thumb Code    54  setup.o(.text)
+    TimeoutTimer_init                        0x08000c93   Thumb Code    80  setup.o(.text)
+    GPIO_init                                0x08000ce3   Thumb Code   836  setup.o(.text)
+    PWM_init                                 0x08001027   Thumb Code   388  setup.o(.text)
+    ADC_init                                 0x080011ab   Thumb Code   226  setup.o(.text)
+    USART_HUGS_init                          0x0800128d   Thumb Code   206  setup.o(.text)
+    USART_Steer_COM_init                     0x0800135b   Thumb Code   206  setup.o(.text)
+    SysTick_Handler                          0x08001455   Thumb Code    12  it.o(.text)
+    ResetTimeout                             0x08001461   Thumb Code     8  it.o(.text)
+    TIMER13_IRQHandler                       0x08001469   Thumb Code    68  it.o(.text)
+    TIMER0_BRK_UP_TRG_COM_IRQHandler         0x080014ad   Thumb Code    18  it.o(.text)
+    DMA_Channel0_IRQHandler                  0x080014bf   Thumb Code    26  it.o(.text)
+    DMA_Channel1_2_IRQHandler                0x080014d9   Thumb Code    26  it.o(.text)
+    DMA_Channel3_4_IRQHandler                0x080014f3   Thumb Code    26  it.o(.text)
+    millis                                   0x0800150d   Thumb Code     6  it.o(.text)
+    Delay                                    0x08001513   Thumb Code    20  it.o(.text)
+    NMI_Handler                              0x08001527   Thumb Code     2  it.o(.text)
+    HardFault_Handler                        0x08001529   Thumb Code     4  it.o(.text)
+    MemManage_Handler                        0x0800152d   Thumb Code     4  it.o(.text)
+    BusFault_Handler                         0x08001531   Thumb Code     4  it.o(.text)
+    UsageFault_Handler                       0x08001535   Thumb Code     4  it.o(.text)
+    SVC_Handler                              0x08001539   Thumb Code     2  it.o(.text)
+    DebugMon_Handler                         0x0800153b   Thumb Code     2  it.o(.text)
+    PendSV_Handler                           0x0800153d   Thumb Code     2  it.o(.text)
+    SendBuffer                               0x08001559   Thumb Code    50  comms.o(.text)
+    CalcCRC                                  0x0800158b   Thumb Code    62  comms.o(.text)
+    SendSteerDevice                          0x080015c9   Thumb Code    36  commssteering.o(.text)
+    max                                      0x080015ed   Thumb Code    14  commssteering.o(.text)
+    CheckUSARTSteerInput                     0x080015fb   Thumb Code   290  commssteering.o(.text)
+    UpdateUSARTSteerInput                    0x0800171d   Thumb Code   188  commssteering.o(.text)
+    SetESTOP                                 0x080017fd   Thumb Code     8  commshugs.o(.text)
+    SendHUGSReply                            0x08001805   Thumb Code   490  commshugs.o(.text)
+    CheckUSARTHUGSInput                      0x080019ef   Thumb Code   266  commshugs.o(.text)
+    UpdateUSARTHUGSInput                     0x08001af9   Thumb Code   188  commshugs.o(.text)
+    SendHUGSCmd                              0x08001bb5   Thumb Code   212  commshugs.o(.text)
     adc_deinit                               0x08001c8d   Thumb Code    20  gd32f1x0_adc.o(.text)
     adc_enable                               0x08001ca1   Thumb Code    24  gd32f1x0_adc.o(.text)
     adc_disable                              0x08001cb9   Thumb Code    14  gd32f1x0_adc.o(.text)
@@ -1170,13 +1170,13 @@ Memory Map of the image
     0x080001f8   0x080001f8   0x00000004   Code   RO          829    .ARM.Collect$$rtexit$$00000003  c_w.l(rtexit2.o)
     0x080001fc   0x080001fc   0x00000006   Code   RO          830    .ARM.Collect$$rtexit$$00000004  c_w.l(rtexit2.o)
     0x08000202   0x08000202   0x00000002   PAD
-    0x08000204   0x08000204   0x00000220   Code   RO            4    .text               main.o
-    0x08000424   0x08000424   0x00000824   Code   RO          144    .text               bldc.o
-    0x08000c48   0x08000c48   0x00000804   Code   RO          183    .text               setup.o
-    0x0800144c   0x0800144c   0x00000104   Code   RO          212    .text               it.o
-    0x08001550   0x08001550   0x00000070   Code   RO          246    .text               comms.o
-    0x080015c0   0x080015c0   0x00000234   Code   RO          270    .text               commssteering.o
-    0x080017f4   0x080017f4   0x00000498   Code   RO          323    .text               commshugs.o
+    0x08000204   0x08000204   0x00000228   Code   RO            4    .text               main.o
+    0x0800042c   0x0800042c   0x00000824   Code   RO          144    .text               bldc.o
+    0x08000c50   0x08000c50   0x00000804   Code   RO          183    .text               setup.o
+    0x08001454   0x08001454   0x00000104   Code   RO          212    .text               it.o
+    0x08001558   0x08001558   0x00000070   Code   RO          246    .text               comms.o
+    0x080015c8   0x080015c8   0x00000234   Code   RO          270    .text               commssteering.o
+    0x080017fc   0x080017fc   0x00000490   Code   RO          323    .text               commshugs.o
     0x08001c8c   0x08001c8c   0x00000684   Code   RO          352    .text               gd32f1x0_adc.o
     0x08002310   0x08002310   0x000004b4   Code   RO          400    .text               gd32f1x0_dma.o
     0x080027c4   0x080027c4   0x000000cc   Code   RO          424    .text               gd32f1x0_fwdgt.o
@@ -1251,7 +1251,7 @@ Image component sizes
 
       2188        316        776        114          0       7037   bldc.o
        112          0          0          0          0       1185   comms.o
-      1176         96          0         10         17       4006   commshugs.o
+      1168         94          0         10         17       4046   commshugs.o
        564         36          0          4         12       3008   commssteering.o
       1668         22          0          0          0       6861   gd32f1x0_adc.o
       1204          8          0          0          0       5807   gd32f1x0_dma.o
@@ -1262,13 +1262,13 @@ Image component sizes
       3370         30          0          0          0      17780   gd32f1x0_timer.o
       1614         12          0          0          0      14101   gd32f1x0_usart.o
        260         26          0          9          0       2785   it.o
-       544         50          0          8          0      89771   main.o
+       552         50          0          8          0      89775   main.o
       2052         74          0          2        132       3424   setup.o
         64         26        360          0       2048        840   startup_gd32f1x0.o
        492         52          0          4          0       1893   system_gd32f1x0.o
 
     ----------------------------------------------------------------------
-     18500        880       1168        152       2212     174914   Object Totals
+     18500        878       1168        152       2212     174958   Object Totals
          0          0         32          0          0          0   (incl. Generated)
          4          0          0          1          3          0   (incl. Padding)
 
@@ -1334,9 +1334,9 @@ Image component sizes
 
       Code (inc. data)   RO Data    RW Data    ZI Data      Debug   
 
-     20408        936       1168        152       2312     173838   Grand Totals
-     20408        936       1168        152       2312     173838   ELF Image Totals
-     20408        936       1168        152          0          0   ROM Totals
+     20408        934       1168        152       2312     173882   Grand Totals
+     20408        934       1168        152       2312     173882   ELF Image Totals
+     20408        934       1168        152          0          0   ROM Totals
 
 ==============================================================================
 

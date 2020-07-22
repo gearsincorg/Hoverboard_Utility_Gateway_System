@@ -356,18 +356,12 @@ void SendHUGSReply()
 //----------------------------------------------------------------------------
 void SendHUGSCmd(CMD_ID SlaveCmd, int16_t value) 
 {
-	uint8_t length = 1;
+	int8_t length = -1;
 	uint16_t crc = 0;
 	uint8_t buffer[USART_HUGS_TX_BYTES];
 	
-	buffer[0] = '/';
-	buffer[1] = 1;
-	buffer[2] = HUGS_Sequence << 4;
-	buffer[3] = SlaveCmd;
-	buffer[4] = NOR;
-	
 	switch(SlaveCmd) {
-		case DSPE:
+		case SPE:
 			  length = 2;
 				buffer[5] = value & 0xFF ;
 				buffer[6] = value >> 8;
@@ -381,14 +375,21 @@ void SendHUGSCmd(CMD_ID SlaveCmd, int16_t value)
 			break;
 	}
 
-	buffer[1] = length;
-	
-	// Calculate CRC
-  crc = CalcCRC(buffer, length + 5);
-  buffer[length + 5] = crc & 0xFF;
-  buffer[length + 6] = (crc >> 8) & 0xFF;
-	buffer[length + 7] = '\n';
-	
-	SendBuffer(USART_HUGS, buffer, length + 8);
+	// Only send a cmd if we have recognized the command and set a valid length
+	if (length >= 0) {
+		buffer[0] = '/';
+		buffer[1] = length;
+		buffer[2] = 0;
+		buffer[3] = SlaveCmd;
+		buffer[4] = NOR;
+		
+		// Calculate CRC
+		crc = CalcCRC(buffer, length + 5);
+		buffer[length + 5] = crc & 0xFF;
+		buffer[length + 6] = (crc >> 8) & 0xFF;
+		buffer[length + 7] = '\n';
+		
+		SendBuffer(USART_HUGS, buffer, length + 8);
+	}
 }
 
