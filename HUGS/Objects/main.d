@@ -29,6 +29,7 @@
 .\objects\main.o: Src\../Inc/defines.h
 .\objects\main.o: Src\../Inc/it.h
 .\objects\main.o: Src\../Inc/bldc.h
+.\objects\main.o: Src\../Inc/comms.h
 .\objects\main.o: Src\../Inc/commsHUGS.h
 .\objects\main.o: Src\../Inc/commsSteering.h
 .\objects\main.o: d:\Keil_v5\ARM\ARMCC\Bin\..\include\stdio.h

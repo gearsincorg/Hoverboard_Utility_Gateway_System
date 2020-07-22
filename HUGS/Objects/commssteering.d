@@ -27,6 +27,7 @@
 .\objects\commssteering.o: Src\../Inc/it.h
 .\objects\commssteering.o: Src\../Inc/../Inc/config.h
 .\objects\commssteering.o: Src\../Inc/comms.h
+.\objects\commssteering.o: Src\../Inc/commsHUGS.h
 .\objects\commssteering.o: Src\../Inc/commsSteering.h
 .\objects\commssteering.o: Src\../Inc/setup.h
 .\objects\commssteering.o: Src\../Inc/defines.h

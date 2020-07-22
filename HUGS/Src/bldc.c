@@ -36,16 +36,8 @@
 #define PHASE_G_OFFSET	(FULL_PHASE * 2 / 3)
 #define TRANSITION_ANGLE	233
 
-#define SPEED_MODE_PF				0
-#define SPEED_MODE_STEP			1
-#define SPEED_MODE_DUAL			2
-#define DEFAULT_SPEED_MODE	SPEED_MODE_PF
-#define DEFAULT_MAX_STEP_SPEED 200
-
-
 // Internal constants
 const int16_t pwm_res = 72000000 / 2 / PWM_FREQ; // = 2000
-
 const int32_t WHEEL_PERIMETER    = 530 ;  // mm
 const int32_t SPEED_TICKS_FACTOR = 188444 ;  // Divide factor by speed to get ticks per cycle, or visa versa.
 const int32_t SINE_TICKS_FACTOR  = 3010   ;  // Divide factor by speed to get ticks per degree.

@@ -38,6 +38,7 @@
 #include "../Inc/config.h"
 #include "../Inc/it.h"
 #include "../Inc/bldc.h"
+#include "../Inc/comms.h"
 #include "../Inc/commsHUGS.h"
 #include "../Inc/commsSteering.h"
 #include "stdio.h"
@@ -52,7 +53,6 @@ extern uint16_t batteryVoltagemV;					// global variable for battery voltage
 	
 extern FlagStatus timedOut;								// Timeoutvariable set by timeout timer
 
-extern bool			HUGS_Enabled;							// Set by HUGS communications
 extern bool			HUGS_ESTOP;
 
 extern uint8_t buzzerFreq;    						// global variable for the buzzer pitch. can be 1, 2, 3, 4, 5, 6, 7...
@@ -65,7 +65,6 @@ uint32_t inactivity_timeout_counter = 0;	// Inactivity counter ms From last comm
 void ShowBatteryState(uint32_t pin);
 void ShutOff(void);
 #endif
-
 
 //----------------------------------------------------------------------------
 // MAIN function
@@ -123,7 +122,7 @@ int main (void)
 		// Reload watchdog while button is pressed
 		fwdgt_counter_reload();
 	}
-
+	
   while(1)
 	{
 		// Shut device if ESTOP requested or when button is pressed
@@ -181,7 +180,6 @@ void ShutOff(void)
 	
 	// Ensure that drive is off and estop status set.
 	SetPWM(0);
-	HUGS_Enabled = FALSE;
 	HUGS_ESTOP   = TRUE;	
 	SetEnable(RESET);
 	SendHUGSReply();			// Transfer ESTOP to Controller
