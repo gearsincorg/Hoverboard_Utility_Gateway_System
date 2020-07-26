@@ -111,7 +111,6 @@
 #define USART_STEER_COM_RX_PIN GPIO_PIN_7
 #define USART_STEER_COM_RX_PORT GPIOB
 
-#ifdef MASTER
 // Buzzer defins
 #define BUZZER_PIN GPIO_PIN_10
 #define BUZZER_PORT GPIOB
@@ -146,4 +145,3 @@ typedef struct
 
 void	resetInactivityTimer(void);
 
-#endif

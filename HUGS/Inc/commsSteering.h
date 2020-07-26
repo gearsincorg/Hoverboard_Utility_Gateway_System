@@ -42,7 +42,6 @@ void UpdateUSARTSteerInput(void);
 //----------------------------------------------------------------------------
 // Send frame to steer device
 //----------------------------------------------------------------------------
-void SendSteerDevice(void);
 int16_t		max(int16_t a, int16_t b);
 
 #endif

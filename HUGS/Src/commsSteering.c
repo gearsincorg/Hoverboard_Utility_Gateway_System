@@ -37,34 +37,21 @@
 
 #define STEER_MAX_DATA 4  			  // Max variable Data Length'
 #define STEER_EOM_OFFSET 7				// Location of EOM char based on variable data length
-#define USART_STEER_TX_BYTES (STEER_MAX_DATA + 8)  // Max buffeer size including
 #define USART_STEER_RX_BYTES (STEER_MAX_DATA + 8)  // start '/' and stop character '\n'
+#define USART_STEER_TX_BYTES 2    // Max buffeer size including
 
 extern uint8_t usartSteer_COM_rx_buf[USART_STEER_COM_RX_BUFFERSIZE];
 
 static bool 	 sSteerRecord = FALSE;
 static uint8_t sUSARTSteerRecordBuffer[USART_STEER_RX_BYTES];
 static uint8_t sUSARTSteerRecordBufferCounter = 0;
+static uint8_t 	steerReply[USART_STEER_TX_BYTES] = {'/', '\n'};
 
 CMD_ID    Steer_CommandID  = NOP;
 RSP_ID		Steer_ResponseID = NOR;
 
 bool CheckUSARTSteerInput(uint8_t u8USARTBuffer[]);
 
-//----------------------------------------------------------------------------
-// Send frame to steer device
-//----------------------------------------------------------------------------
-void SendSteerDevice(void)
-{
-	int index = 0;
-	uint8_t buffer[USART_STEER_TX_BYTES];
-	
-	// Ask for steer input
-	buffer[index++] = '/';
-	buffer[index++] = '\n';
-	
-	SendBuffer(USART_STEER_COM, buffer, index);
-}
 
 //----------------------------------------------------------------------------
 // Update USART steer input
@@ -210,6 +197,9 @@ bool CheckUSARTSteerInput(uint8_t USARTBuffer[])
 		  break;
 	}
 
+	// Send keep-alive reply
+	SendBuffer(USART_STEER_COM, steerReply,  sizeof(steerReply));
+	
 	// Reset the pwm timout to avoid stopping motors
 	ResetTimeout();
 	

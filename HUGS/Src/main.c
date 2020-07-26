@@ -46,7 +46,6 @@
 #include "string.h"
 #include <math.h>     
 
-#ifdef MASTER
 FlagStatus activateWeakening = RESET;			// global variable for weakening
 			
 extern uint16_t batteryVoltagemV;					// global variable for battery voltage
@@ -55,16 +54,13 @@ extern FlagStatus timedOut;								// Timeoutvariable set by timeout timer
 
 extern bool			HUGS_ESTOP;
 
-extern uint8_t buzzerFreq;    						// global variable for the buzzer pitch. can be 1, 2, 3, 4, 5, 6, 7...
+extern uint8_t buzzerFreq;    						// global variable for the buzzer pitch.   can be 1, 2, 3, 4, 5, 6, 7...
 extern uint8_t buzzerPattern; 						// global variable for the buzzer pattern. can be 1, 2, 3, 4, 5, 6, 7...
 
-
-uint16_t command_timeout_counter = 0;	    // motor safety counter ms From last command
-uint32_t inactivity_timeout_counter = 0;	// Inactivity counter ms From last command
+uint32_t inactivityTimer = 0;			  			// Inactivity counter ms From last command
 
 void ShowBatteryState(uint32_t pin);
 void ShutOff(void);
-#endif
 
 //----------------------------------------------------------------------------
 // MAIN function
@@ -110,9 +106,9 @@ int main (void)
 	// Init usart steer/bluetooth
 	USART_Steer_COM_init();
 
-	// Startup-Sound
+	// Startup-Sound.  This plays for 1 second
 	buzzerFreq = 7;
-  Delay(100);
+  Delay(1000);
 	fwdgt_counter_reload();
   buzzerFreq = 0;
 
@@ -131,34 +127,44 @@ int main (void)
 			ShutOff();
     }
 
-		// Show green battery symbol when battery level BAT_LOW_LVL1 is reached
-    if (batteryVoltagemV > BAT_LOW_LVL1_MV)
-		{
-			// Show green battery light
-			ShowBatteryState(LED_GREEN);
-		}
-		// Make silent sound and show orange battery symbol when battery level BAT_LOW_LVL2 is reached
-    else if (batteryVoltagemV > BAT_LOW_LVL2_MV && batteryVoltagemV < BAT_LOW_LVL1_MV)
-		{
-			// Show orange battery light
-			ShowBatteryState(LED_ORANGE);
-    }
-		// Make even more sound and show red battery symbol when battery level BAT_LOW_DEAD is reached
-		else if  (batteryVoltagemV > BAT_LOW_DEAD_MV && batteryVoltagemV < BAT_LOW_LVL2_MV)
-		{
-			// Show red battery light
-			ShowBatteryState(LED_RED);
-    }
-		else
-		{
-			ShutOff();
-    }
-
 		// Shut off device after INACTIVITY_TIMEOUT in minutes
-    if (inactivity_timeout_counter++ > (INACTIVITY_TIMEOUT * 60 * 1000) / (DELAY_IN_MAIN_LOOP + 1))
+    if (inactivityTimer++ > INACTIVITY_COUNTER)
 		{ 
       ShutOff();
-    }
+    } else if (inactivityTimer > INACTIVITY_WARNING) { 
+			buzzerFreq = 8;
+      buzzerPattern = 8;
+    } else {
+		
+			// Show green battery symbol when battery level BAT_LOW_LVL1 is reached
+			if (batteryVoltagemV > BAT_LOW_LVL1_MV)
+			{
+				// Show green battery light
+				ShowBatteryState(LED_GREEN);
+				buzzerFreq = 0;
+			}
+			// Make silent sound and show orange battery symbol when battery level BAT_LOW_LVL2 is reached
+			else if (batteryVoltagemV > BAT_LOW_LVL2_MV && batteryVoltagemV < BAT_LOW_LVL1_MV)
+			{
+				// Show orange battery light
+				ShowBatteryState(LED_ORANGE);
+				buzzerFreq = 5;
+				buzzerPattern = 8;
+			}
+			// Make even more sound and show red battery symbol when battery level BAT_LOW_DEAD is reached
+			else if  (batteryVoltagemV > BAT_LOW_DEAD_MV && batteryVoltagemV < BAT_LOW_LVL2_MV)
+			{
+				// Show red battery light
+				ShowBatteryState(LED_RED);
+				buzzerFreq = 5;
+				buzzerPattern = 1;
+			}
+			else
+			{
+				ShutOff();
+			}
+		}
+
 
 		Delay(DELAY_IN_MAIN_LOOP);
 		
@@ -190,7 +196,7 @@ void ShutOff(void)
 	for (index = 0; index < 8; index++)
 	{
 		buzzerFreq = index;
-		Delay(10);
+		Delay(100);
 	}
 	buzzerFreq = 0;
 
@@ -218,5 +224,5 @@ void ShowBatteryState(uint32_t pin)
 
 
 void	resetInactivityTimer(void) {
-	inactivity_timeout_counter = 0;
+	inactivityTimer = 0;
 }
